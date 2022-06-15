@@ -81,7 +81,7 @@ def interpolacion(arch_encrip, nombre_des):
 	lista_terminos = []
 	lista_imagenes = []
 	
-	for c in lista:
+	for c, d in lista:
 		
 		numerador = 1
 		denominador = 1
