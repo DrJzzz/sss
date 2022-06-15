@@ -8,10 +8,7 @@ from Cryptodome.Cipher import AES
 primo = 208351617316091241234326746312124448251235562226470491514186331217050270460481
 
 def encript(contraseña_usuario, nombre_arch, particiones, llaves, ruta_arch_encrip):
-	
-	contraseña_hash = hashlib.sha256(contraseña_usuario.encode())
-	contra_hexa = contraseña_hash.hexdigest()
-	contra_decimal = (int(contra_hexa, 16))
+	contra_decimal = (int(hashlib.sha256(contraseña_usuario.encode()).hexdigest(), 16))
 	
 	# lista corresponde a los coeficientes del polinomio
 	lista = []
@@ -72,22 +69,19 @@ def encript(contraseña_usuario, nombre_arch, particiones, llaves, ruta_arch_enc
 
 
 def interpolacion(arch_encrip, nombre_des):
-
 	print("Para dejar de ingresar valores ingrese el valor 0 en la coordenada 1")
 	lista = []
-	x = int(input("coordenada 1: "))
-	y = int(input("coordenada 2: "))
 	while(True):
-		lista.append((x,y))
 		x = int(input("coordenada 1: "))
-		y = int(input("coordenada 2: "))
 		if(x == 0):
 			break
-	
+		y = int(input("coordenada 2: "))
+		lista.append((x,y))
+		
 	lista_terminos = []
 	lista_imagenes = []
 	
-	for c, d in lista:
+	for c in lista:
 		
 		numerador = 1
 		denominador = 1
@@ -135,7 +129,7 @@ def main():
 		print("Ingrese la ruta del archivo a enciptar: ")
 		ruta_arch_encrip = str(input())
 		contraseña_usuario = getpass("ingrese una contraseña: ")
-		print("ingrese el nombre del archivo encriptado y el archivo .txt: ")
+		print("ingrese el nombre del archivo encriptado: ")
 		nombre_arch = str(input()) 
 		print("ingrese la cantidad en la que la contraseña sera dividida: ")
 		particiones = int(input())
@@ -151,6 +145,9 @@ def main():
 		nombre_des = str(input())
 		
 		interpolacion(arch_encrip, nombre_des)
+	else:
+		print("Ingresa una opcion valida.")
+		main()
 		
 main()
 	
