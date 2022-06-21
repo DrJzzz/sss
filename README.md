@@ -8,3 +8,7 @@ Luego corre el scprit con: python3 sss.py
 
 selecciona la opción valida 'c' para codificar o 'd' para decodificar
 
+# MIEMBROS DEL EQUIPO
+- Gabriela Cruz Blanco
+- Oscar Noel Hernandez Garcia
+- Rodolfo Josue Menchaca Carrillo
